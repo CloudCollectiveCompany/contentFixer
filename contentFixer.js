@@ -47,12 +47,6 @@ function setContent() {
 		}
 	}
 }
-function resizeContent() {
-	if (document.getElementByClassName){
-		var featureElement = document.getElementByID("homeBox");
-		featureElement.style.display="none !important";
-	}
-}
 window.onload = function() {
 	setContent();
 }
