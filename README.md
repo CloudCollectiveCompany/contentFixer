@@ -1,8 +1,7 @@
 contentFixer
 ============
 
-Author: Eran Schoellhorn
-Date: 1/19/13
+Eran Schoellhorn | 1/19/13 | www.eran.sh
 
 Description: A simple script to resize and vertically center content in a browser when components may be scaled without adversly affecting presention. The original implementation looks something like this...
 
