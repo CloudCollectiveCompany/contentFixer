@@ -19,30 +19,30 @@ function setContent() {
 	if (document.getElementById) {
 		var windowHeight = getWindowHeight();
 		if (windowHeight > 0) {
-			var contentElement = document.getElementById('content');
+			var contentElement = document.getElementById('content'); //This is the containing div by which everything is measured.
 			var contentHeight = contentElement.offsetHeight;
-			if (windowHeight - contentHeight > 0) {
+			if (windowHeight - contentHeight > 0) { //Just center content if everything already fits in the viewport
 				contentElement.style.position = 'relative';
 				contentElement.style.top = ((windowHeight / 2) - (contentHeight / 2) - 26) + 'px';
 			}
-			else if (( contentHeight + 100 ) > windowHeight){
+			else if (( contentHeight + 100 ) > windowHeight){ //If the content is greater than the viewport.
 				contentElement.style.display = 'static';
-				var imageElement = document.getElementById('homeBox');
-				var logoElement = document.getElementById('homeLogo');
+				var imageElement = document.getElementById('homeBox'); //TODO: Seems like a ton of redundancy going on here
+				var logoElement = document.getElementById('homeLogo'); // 	   Really need to clean things up when I know how...
 				var newImgWidth = 0;
 				var newLogoWidth = 0;
 				while (contentHeight > windowHeight){
 					var imageWidth = imageElement.offsetWidth;
 					var logoWidth = logoElement.offsetWidth;
-					newImgWidth = imageWidth - 100;
+					newImgWidth = imageWidth - 100; //Default step is 100, too small of an adjustment didn't seem to do anything.
 					newLogoWidth = logoWidth - 100;
 					imageElement.style.maxWidth = newImgWidth + 'px';
 					logoElement.style.maxWidth = newLogoWidth + 'px';
-					console.log("Content height was: " + contentHeight);
+					//console.log("Content height was: " + contentHeight); //Just proof that something actually happened.
 					contentHeight = contentElement.offsetHeight;
-					console.log("Content height is now: " + contentHeight);
+					//console.log("Content height is now: " + contentHeight);
 				}
-				setContent();
+				setContent(); //Probably bad to call a function from within the same function. I should do something about this...
 			}
 		}
 	}
