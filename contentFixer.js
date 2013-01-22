@@ -26,7 +26,7 @@ function setContent() {
 				contentElement.style.top = ((windowHeight / 2) - (contentHeight / 2) - 26) + 'px';
 			}
 			else if (( contentHeight + 100 ) > windowHeight){ //If the content is greater than the viewport.
-				contentElement.style.display = 'static';
+				//contentElement.style.display = 'static';
 				var imageElement = document.getElementById('homeBox'); //TODO: Seems like a ton of redundancy going on here
 				var logoElement = document.getElementById('homeLogo'); // 	   Really need to clean things up when I know how...
 				var newImgWidth = 0;
