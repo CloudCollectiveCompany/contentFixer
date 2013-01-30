@@ -1,6 +1,6 @@
-var contentDiv = '#content'; //the div surrounding your content
-var contentMargin = 50 ; //increase this number to shrink more than window height
-var shrinkFactor = 0.05 ; //this is the step at which objects are reduced
+var contentDiv =		'#content'; 	//the div surrounding your content
+var contentMargin = 	50 ;			//increase this number to shrink more than the window height
+var shrinkFactor = 		0.05 ; 			//this is the step at which objects are reduced
 
 /* var resizableObjects = [ //TODO: Make objects resizable by adding them into an array. Going to have to do it clumsily for now, I guess...
 	'mainImage' //Only works with IDs!
