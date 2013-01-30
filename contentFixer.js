@@ -29,8 +29,6 @@ function centerContent() {
 function resizeContent() {	
 	var parentHeight = $(window).height();
 	var contentHeight = $(contentDiv).height();
-	//var windowHeight = getWindowHeight();
-	//contentElement.style.display = 'static';
 	
 	var imageElement = $('#mainImage'); //TODO: Seems like a ton of redundancy going on here
 	var logoElement = $('#logoImage'); // 	   Really need to clean things up when I know how...
@@ -43,9 +41,9 @@ function resizeContent() {
 		var imageWidth = imageElement.width();
 		var logoWidth = logoElement.width();
 
-		console.log("image width: " + imageWidth + " | logo height: " + logoWidth);
+		console.log("image width: " + imageWidth + " | logo width: " + logoWidth);
 		
-		newImgWidth = imageWidth - (imageWidth * 0.1); //Default step is 100, too small of an adjustment didn't seem to do anything.
+		newImgWidth = imageWidth - (imageWidth * 0.1);
 		newLogoWidth = logoWidth - (logoWidth * 0.1);
 		
 		imageElement.css('max-width', newImgWidth);
@@ -56,7 +54,7 @@ function resizeContent() {
 		contentHeight = $(contentDiv).height();
 		console.log("Content height is now: " + contentHeight);
 	}
-	centerContent(); //Probably bad to call a function from within the same function. I should do something about this...
+	centerContent();
 }			
 
 function assessDaScreen() {
