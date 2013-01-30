@@ -30,16 +30,18 @@ function centerContent() {
 } 
 
 function resizeContent() {	
+	
+	//Set up the playing field
 	var parentHeight = $(window).height();
 	var contentHeight = $(contentDiv).height();
-	//var rWidths = [];
-	
+
+	//Add a dimension to the array to store respective object widths
 	for(var i = 0; i < rObject.length; i++){
 		rObject[i] = [rObject[i],$(rObject[i]).width()]
 	}
 	
-	var newImgWidth = 0;
-	var newLogoWidth = 0;
+	//var newImgWidth = 0;
+	//var newLogoWidth = 0;
 	
 	while ((parentHeight - contentHeight) < contentMargin ){
 	
@@ -59,8 +61,10 @@ function resizeContent() {
 		//imageElement.css('max-width', newImgWidth);
 		//logoElement.css('max-width', newLogoWidth);
 		
-		//Just proof that something actually happened.
+		//Reset the content width variable for more looping
 		contentHeight = $(contentDiv).height();
+		
+		//Just proof that something actually happened.
 		console.log("| Content height : " + contentHeight + " |\n| Window height  : " + parentHeight +  " |\n|    Difference  : " + (parentHeight-contentHeight));
 	}
 	centerContent();
