@@ -1,5 +1,6 @@
-var contentDiv = '#content';
-var contentMargin = 250 ;
+var contentDiv = '#content'; //the div surrounding your content
+var contentMargin = 50 ; //increase this number to shrink more than window height
+var shrinkFactor = 0.05 ; //this is the step at which objects are reduced
 
 /* var resizableObjects = [ //TODO: Make objects resizable by adding them into an array. Going to have to do it clumsily for now, I guess...
 	'mainImage' //Only works with IDs!
@@ -36,23 +37,22 @@ function resizeContent() {
 	var newImgWidth = 0;
 	var newLogoWidth = 0;
 	
-	while (contentHeight > parentHeight){
+	while ((parentHeight - contentHeight) < contentMargin ){
 	
 		var imageWidth = imageElement.width();
 		var logoWidth = logoElement.width();
 
 		console.log("image width: " + imageWidth + " | logo width: " + logoWidth);
 		
-		newImgWidth = imageWidth - (imageWidth * 0.1);
-		newLogoWidth = logoWidth - (logoWidth * 0.1);
+		newImgWidth = imageWidth - (imageWidth * shrinkFactor);
+		newLogoWidth = logoWidth - (logoWidth * shrinkFactor);
 		
 		imageElement.css('max-width', newImgWidth);
 		logoElement.css('max-width', newLogoWidth);
 		
 		//Just proof that something actually happened.
-		console.log("Content height was: " + contentHeight); 
 		contentHeight = $(contentDiv).height();
-		console.log("Content height is now: " + contentHeight);
+		console.log("| Content height : " + contentHeight + " |\n| Window height  : " + parentHeight +  " |\n|    Difference  : " + (parentHeight-contentHeight));
 	}
 	centerContent();
 }			
