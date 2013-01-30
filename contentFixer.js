@@ -2,6 +2,8 @@ var contentDiv =		'#content'; 	//the div surrounding your content
 var contentMargin = 	50 ;			//increase this number to shrink more than the window height
 var shrinkFactor = 		0.05 ; 			//this is the step at which objects are reduced
 
+var rObject = [ '#mainImage' , '#logoImage' ];
+
 /* var resizableObjects = [ //TODO: Make objects resizable by adding them into an array. Going to have to do it clumsily for now, I guess...
 	'mainImage' //Only works with IDs!
 ];
@@ -30,25 +32,32 @@ function centerContent() {
 function resizeContent() {	
 	var parentHeight = $(window).height();
 	var contentHeight = $(contentDiv).height();
+	//var rWidths = [];
 	
-	var imageElement = $('#mainImage'); //TODO: Seems like a ton of redundancy going on here
-	var logoElement = $('#logoImage'); // 	   Really need to clean things up when I know how...
+	for(var i = 0; i < rObject.length; i++){
+		rObject[i] = [rObject[i],$(rObject[i]).width()]
+	}
 	
 	var newImgWidth = 0;
 	var newLogoWidth = 0;
 	
 	while ((parentHeight - contentHeight) < contentMargin ){
 	
-		var imageWidth = imageElement.width();
-		var logoWidth = logoElement.width();
+		//var imageWidth = imageElement.width();
+		//var logoWidth = logoElement.width();
 
-		console.log("image width: " + imageWidth + " | logo width: " + logoWidth);
+		//console.log("image width: " + imageWidth + " | logo width: " + logoWidth);
 		
-		newImgWidth = imageWidth - (imageWidth * shrinkFactor);
-		newLogoWidth = logoWidth - (logoWidth * shrinkFactor);
+		for(var i = 0; i < rObject.length; i++){
+			rObject[i][1] = rObject[i][1] - (rObject[i][1] * shrinkFactor);
+			$(rObject[i][0]).css('max-width', rObject[i][1])
+		}
 		
-		imageElement.css('max-width', newImgWidth);
-		logoElement.css('max-width', newLogoWidth);
+		//newImgWidth = imageWidth - (imageWidth * shrinkFactor);
+		//newLogoWidth = logoWidth - (logoWidth * shrinkFactor);
+		
+		//imageElement.css('max-width', newImgWidth);
+		//logoElement.css('max-width', newLogoWidth);
 		
 		//Just proof that something actually happened.
 		contentHeight = $(contentDiv).height();
