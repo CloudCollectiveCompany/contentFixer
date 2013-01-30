@@ -1,4 +1,5 @@
 var contentDiv = '#content';
+var contentMargin = 250 ;
 
 /* var resizableObjects = [ //TODO: Make objects resizable by adding them into an array. Going to have to do it clumsily for now, I guess...
 	'mainImage' //Only works with IDs!
@@ -30,18 +31,23 @@ function resizeContent() {
 	var contentHeight = $(contentDiv).height();
 	//var windowHeight = getWindowHeight();
 	//contentElement.style.display = 'static';
+	
 	var imageElement = $('#mainImage'); //TODO: Seems like a ton of redundancy going on here
 	var logoElement = $('#logoImage'); // 	   Really need to clean things up when I know how...
+	
 	var newImgWidth = 0;
 	var newLogoWidth = 0;
+	
 	while (contentHeight > parentHeight){
-		var imageWidth = imageElement.height();
-		var logoWidth = logoElement.height();
+	
+		var imageWidth = imageElement.width();
+		var logoWidth = logoElement.width();
 
 		console.log("image width: " + imageWidth + " | logo height: " + logoWidth);
 		
-		newImgWidth = imageWidth - 5; //Default step is 100, too small of an adjustment didn't seem to do anything.
-		newLogoWidth = logoWidth - 5;
+		newImgWidth = imageWidth - (imageWidth * 0.1); //Default step is 100, too small of an adjustment didn't seem to do anything.
+		newLogoWidth = logoWidth - (logoWidth * 0.1);
+		
 		imageElement.css('max-width', newImgWidth);
 		logoElement.css('max-width', newLogoWidth);
 		
