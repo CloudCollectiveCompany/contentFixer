@@ -1,6 +1,8 @@
-var contentDiv =		'#content'; 	//the div surrounding your content
-var contentMargin = 	50 ;			//increase this number to shrink more than the window height
-var shrinkFactor = 		0.05 ; 			//this is the step at which objects are reduced
+var	contentDiv =		'#content' , 	//the div surrounding your content
+	contentMargin = 	50 ,			//increase this number to shrink more than the window height
+	shrinkFactor = 		0.05 , 			//this is the step at which objects are reduced
+	fadeIn =			true ,			//this will fade the content in on load to hide any unsightly content jumping around
+	transitionTime =	3000;
 
 var rObject = [ 		'#mainImage' , 
 						'#logoImage' 
@@ -47,7 +49,14 @@ function assessDaScreen() {
 }
 
 $(document).ready(function() {
-	setTimeout("assessDaScreen()",1000);
+	
+	if(fadeIn){
+	$(contentDiv).fadeTo( 0, 0 );
+	setTimeout("assessDaScreen()",100);
+	$(contentDiv).fadeTo( transitionTime, 1 );
+	}
+	else{setTimeout("assessDaScreen()",100);}
+	
 });
 
 $(window).resize(function() {
