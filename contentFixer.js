@@ -4,11 +4,9 @@ var	contentDiv =		'#content' , 	//the div surrounding your content
 	fadeIn =			true ,			//this will fade the content in on load to hide any unsightly content jumping around
 	transitionTime =	3000;
 
-var rObject = [ 		'#mainImage' , 
-						'#logoImage' 
+var rObject = [ 		['#mainImage',0] , 
+						['#logoImage',0] 
 ];
-
-
 
 function centerContent() {
 
@@ -22,7 +20,7 @@ function resizeContent() {
 	
 	//Add a dimension to the array to store respective object widths
 	for(var i = 0; i < rObject.length; i++){
-		rObject[i] = [rObject[i],$(rObject[i]).width()]
+		rObject[i][1] = $(rObject[i][0]).width()
 	}
 	
 	//Keep looping until the content fits in the screen!
@@ -43,6 +41,7 @@ function assessDaScreen() {
 	if( ($(window).height() - $(contentDiv).height()) < contentMargin ){
 		resizeContent();
 	}
+
 	else { 
 		centerContent();
 	}
